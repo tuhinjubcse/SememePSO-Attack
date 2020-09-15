@@ -52,11 +52,11 @@ import pickle
 dataset = pickle.load(open("aux_files/dataset_xxxx.pkl","rb"))
 adv_orig = pickle.load(open("AD_dpso_sem_bert.pkl", "rb"))[2]
 test_x = dataset.test_seqs2
-orig_examples = []
+original_examples = []
 for _id in adv_orig:
    test_example = test_x[_id]
    example_word_list = [dataset.inv_dict[int(x)] for x in test_example if int(x)!=0]
-   orig_examples.append(example_word_list)
+   original_examples.append(example_word_list)
 ```
 
 ## Instructions for running our codes on other similar datasets
