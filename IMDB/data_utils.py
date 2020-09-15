@@ -90,3 +90,9 @@ class IMDBDataset(object):
     def build_text(self, text_seq):
         text_words = [self.inv_full_dict[x] for x in text_seq]
         return ' '.join(text_words)
+
+if __name__ == "__main__":
+    dataset = IMDBDataset()
+    # specify your path for storing {train,test,valid}.tsv
+    # dataset = IMDBDataset(path_to_tsv_files)
+    pickle.dump(dataset, open("dataset_50000.pkl", 'rb'))

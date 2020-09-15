@@ -23,6 +23,12 @@ This repository is mainly contributed by Yuan Zang and Chenghao Yang.
 - OpenHowNet == 0.0.1a8    
 - pytorch_transformers == 1.0.0  
 - loguru == 0.3.2
+
+Make sure you have run the following codes to complete the installation of `OpenHowNet` before running any codes in this repo.
+```python
+import OpenHowNet
+OpenHowNet.download()
+```
 ## General Required Data and Tools
 - Download [Glove vectors](http://nlp.stanford.edu/data/glove.840B.300d.zip)
 <!-- ### Download Stanford Pos Tagger -->
