@@ -49,7 +49,7 @@ for example_id_list in adv_list:
 ```python
 from data_utils import IMDBDataset
 import pickle
-dataset = pickle.load(open("aux_files/dataset_xxxx.pkl","rb"))
+dataset = pickle.load(open("aux_files/dataset_13837.pkl","rb"))
 adv_orig = pickle.load(open("AD_dpso_sem_bert.pkl", "rb"))[2]
 test_x = dataset.test_seqs2
 original_examples = []
