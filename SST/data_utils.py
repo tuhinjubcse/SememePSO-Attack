@@ -107,4 +107,4 @@ if __name__ == "__main__":
     dataset = IMDBDataset()
     # specify your path for storing {train,test,valid}.tsv
     # dataset = IMDBDataset(path_to_tsv_files)
-    pickle.dump(dataset, open("dataset_13837.pkl", 'rb'))
+    pickle.dump(dataset, open("dataset_13837.pkl", 'wb'))
