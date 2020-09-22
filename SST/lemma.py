@@ -1,5 +1,5 @@
 import pickle
-f=open('aux_files/dataset_13837.pkl','rb')
+f=open('dataset.pkl','rb')
 dataset=pickle.load(f)
 
 word_candidate={}
