@@ -1,14 +1,16 @@
-# Running instructions on SST-2 dataset
-## Data
-- Download SST-2 dataset: [sst-2.zip (Tsinghua)](https://cloud.tsinghua.edu.cn/d/b6b35b7b7fdb43c1bf8c/files/?p=%2Fsst-2.zip) or [sst-2.zip (Google Drive)](https://drive.google.com/file/d/1f8Wmj3jqTzdstGdj8x1YDdh4d6axDDrE/view?usp=sharing)
-- Download processed SST-2 data for training models: [SST2data.zip (Tsinghua)](https://cloud.tsinghua.edu.cn/d/b6b35b7b7fdb43c1bf8c/files/?p=%2FSST2data.zip) or [SST2data.zip (Google Drive)](https://drive.google.com/file/d/1qV8jnDeFoZgSZlT3pO3jFMoaTIPGIb6G/view?usp=sharing)
-## Process Data and Train Model
-(You can skip these part if you have downloaded our processed model and data files.)
+# Running instructions on SST-2/any generic dataset with binary labels.
+# Just remember the format is sentence \t label
 
-- Process SST-2 Data
-```bash
-python data_utils.py
+
+Once you build the conda environment
 ```
+from data_utils import IMDBDataset
+import pickle
+dataset = IMDBDataset(path_to_your_data)
+pickle.dump(dataset, open("dataset.pkl","wb"))
+```
+
+
 - Generate Candidate Substitution Words 
 ```bash
 python gen_pos.py
@@ -38,7 +40,7 @@ The generated `AD_dpso_sem_bert.pkl` will contain the adversarial examples and o
 ```python
 from data_utils import IMDBDataset
 import pickle
-a = pickle.load(open("aux_files/dataset_13837.pkl","rb"))
+a = pickle.load(open("dataset.pkl","rb"))
 adv_list = pickle.load(open("AD_dpso_sem_bert.pkl", "rb"))[3]
 adversarial_examples = []
 for example_id_list in adv_list:
@@ -49,7 +51,7 @@ for example_id_list in adv_list:
 ```python
 from data_utils import IMDBDataset
 import pickle
-dataset = pickle.load(open("aux_files/dataset_13837.pkl","rb"))
+dataset = pickle.load(open("dataset","rb"))
 adv_orig = pickle.load(open("AD_dpso_sem_bert.pkl", "rb"))[2]
 test_x = dataset.test_seqs2
 original_examples = []
