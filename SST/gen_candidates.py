@@ -3,7 +3,7 @@ import OpenHowNet
 
 word_candidate = {}
 
-with open('en_aux_files/dataset_13837.pkl', 'rb') as fh:
+with open('dataset.pkl', 'rb') as fh:
     dataset = pickle.load(fh)
 
 hownet_dict = OpenHowNet.HowNetDict()
