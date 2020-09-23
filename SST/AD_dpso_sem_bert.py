@@ -18,8 +18,8 @@ from keras.layers import *
 
 np.random.seed(3333)
 tf.set_random_seed(3333)
-VOCAB_SIZE  = 13837
-with open('aux_files/dataset_%d.pkl' %VOCAB_SIZE, 'rb') as f:
+# VOCAB_SIZE  = 13837
+with open('dataset.pkl' %VOCAB_SIZE, 'rb') as f:
     dataset = pickle.load(f)
 with open('word_candidates_sense.pkl','rb') as fp:
     word_candidate=pickle.load(fp)
