@@ -31,9 +31,15 @@ python gen_candidates.py #This step takes a while , so be patient
 ```
 3. Create data for training BERT
 
+If you want to retrain
 - Train BERT Model 
 ```bash 
 python SST_BERT.py
+```
+Otherwise use pretained model in drive directory and change line 13 to your model path
+
+```
+self.model.load_state_dict(torch.load('/lfs1/tuhin/SememePSO-Attack/SST/SST_used_data/BERTModel.pt'))
 ```
 ## Craft Adversarial Examples
 - Crafting Adversarial Examples for Bi-LSTM
