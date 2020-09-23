@@ -1,8 +1,20 @@
 # Running instructions on SST-2/any generic dataset with binary labels.
 # Just remember the format is sentence \t label
 
+## Instructions for running our codes on other datasets except SST
+1. Firstly, transform your data as {train,valid,test}.tsv as in SST (our github repo provides examples of these TSV files)
+2. Then, open up a python terminal, run codes as in "Process Data and Train Model" section.
+3. For `SST2data`, you can change your data to our json formats and replace original files under this directory with yours.
+All files we provided under the directory are json-like and self-explained. `*ids.py` file are the ids used in train/valid/dev parition, `xxx_inputs.json` includes all the inputs (id start from 0).
+ You can change the parameter setting in `SSTconfig.py` if you need to.
+4. train the BERT model and generate examples via running codes in "Craft Adversarial Examples"
+5. You should find your examples in `AD_dpso_sem_bert.pkl`.
 
-Once you build the conda environment
+## If you want to do this on SST data download dataset.pkl from the link below and skip step 1 , also you don't need to do anything for step 3 as we already give the data
+https://drive.google.com/drive/folders/1kPfYSSNwlleOGI6YCRzK8qwTqq4Mo1Yr?usp=sharing
+
+
+1.
 ```
 from data_utils import IMDBDataset
 import pickle
@@ -10,17 +22,15 @@ dataset = IMDBDataset(path_to_your_data)
 pickle.dump(dataset, open("dataset.pkl","wb"))
 ```
 
-
+2.
 - Generate Candidate Substitution Words 
 ```bash
 python gen_pos.py
 python lemma.py
-python gen_candidates.py
+python gen_candidates.py #This step takes a while , so be patient
 ```
-- Train BiLSTM Model  
-```bash
-python train_model.py
-```
+3. Create data for training BERT
+
 - Train BERT Model 
 ```bash 
 python SST_BERT.py
@@ -61,11 +71,4 @@ for _id in adv_orig:
    original_examples.append(example_word_list)
 ```
 
-## Instructions for running our codes on other similar datasets
-1. Firstly, transform your data as {train,valid,test}.tsv as in SST (our github repo provides examples of these TSV files)
-2. Then, open up a python terminal, run codes as in "Process Data and Train Model" section.
-3. For `SST2data`, you can change your data to our json formats and replace original files under this directory with yours.
-All files we provided under the directory are json-like and self-explained. `*ids.py` file are the ids used in train/valid/dev parition, `xxx_inputs.json` includes all the inputs (id start from 0).
- You can change the parameter setting in `SSTconfig.py` if you need to.
-4. train the BERT model and generate examples via running codes in "Craft Adversarial Examples"
-5. You should find your examples in `AD_dpso_sem_bert.pkl`.
+
