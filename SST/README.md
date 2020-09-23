@@ -37,7 +37,7 @@ If you want to retrain
 python SST_BERT.py
 ```
 Otherwise use pretained model in drive directory and change line 13 to your model path
-
+https://github.com/tuhinjubcse/SememePSO-Attack/blob/master/SST/encap_sst_bert_zy.py
 ```
 self.model.load_state_dict(torch.load('/lfs1/tuhin/SememePSO-Attack/SST/SST_used_data/BERTModel.pt'))
 ```
